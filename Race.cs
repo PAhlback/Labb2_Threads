@@ -38,6 +38,9 @@ namespace Labb2_Threads
             await TextOuts.PrintWelcomeScreen();
             CancellationToken ct = Cts.Token;
 
+            Race race = new Race();
+            await TextOuts.PrintWelcomeScreen();
+
             await Instructions();
             
             Console.Clear();
