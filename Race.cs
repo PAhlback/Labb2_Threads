@@ -22,11 +22,11 @@ namespace Labb2_Threads
             Console.Write($"Name your car: ");
             string carName = Console.ReadLine();
             Car newCar = new Car(carName);
-            Cars.AddOrUpdate(newCar.GetCarId(), newCar, (k, v) => newCar);
+            Cars.AddOrUpdate(newCar.CarId, newCar, (k, v) => newCar);
 
             Console.WriteLine("Your opponents name is: Death Wagon");
             newCar = new Car("Death Wagon");
-            Cars.AddOrUpdate(newCar.GetCarId(), newCar, (k, v) => newCar);
+            Cars.AddOrUpdate(newCar.CarId, newCar, (k, v) => newCar);
 
             Console.WriteLine("Press enter to continue");
             Console.ReadLine();

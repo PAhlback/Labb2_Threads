@@ -23,11 +23,6 @@ namespace Labb2_Threads.Models
             CarIdIncrementer++;
         }
 
-        public int GetCarId()
-        {
-            return CarId;
-        }
-
         public async Task DistanceMeter(CancellationToken ct)
         {
             Task t = Task.Run(() => Trouble());
