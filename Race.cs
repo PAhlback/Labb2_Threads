@@ -41,8 +41,6 @@ namespace Labb2_Threads
             await Instructions();
             
             Console.Clear();
-
-            await TextOuts.PrintWelcomeScreen();
             await TextOuts.PrintRaceStarted();
 
             RaceIsRunning = true;
@@ -53,8 +51,6 @@ namespace Labb2_Threads
             //Start method waiting for user inputs
             Task status = Task.Run(() => RaceStatus(ct));
 
-            //PrintInfo();
-
             Task.WaitAll(car1, car2);
             
             Winner = Cars.Values.FirstOrDefault(c => c.DistanceTraveled > 10000);
@@ -63,26 +59,15 @@ namespace Labb2_Threads
             if (Winner != null)
             {
                 await TextOuts.PrintWinnerScreen(Winner.Name.ToString());
-                Console.SetCursorPosition(17, 12);
+                Task.WaitAny(status);
             } 
             else 
             {
                 await Console.Out.WriteLineAsync("Race ended early - no winners here!");
+                await Console.Out.WriteLineAsync("Press enter to end");
+                await Console.In.ReadLineAsync();
             }
-
-            await Console.Out.WriteLineAsync($"Press enter to end!");
-            Task.WaitAny(status);
         }
-
-        //public static async Task PrintInfo()
-        //{
-        //    while (RaceIsRunning)
-        //    {
-        //        await Task.Delay(2000);
-        //        await Console.Out.WriteLineAsync($"{Cars[1].Name}, {Cars[1].DistanceTraveled}");
-        //        await Console.Out.WriteLineAsync($"{Cars[2].Name}, {Cars[2].DistanceTraveled}");
-        //    }
-        //}
 
         static async Task<bool> RaceStatus(CancellationToken ct)
         {

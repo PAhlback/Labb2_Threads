@@ -11,8 +11,6 @@ namespace Labb2_Threads
             Race race = new Race();
 
             await Race.RunRace();
-
-            await Console.In.ReadLineAsync();
         }
     }
 }

@@ -25,9 +25,14 @@ namespace Labb2_Threads
             await Console.Out.WriteLineAsync(
                 "             (         )        )             (     \r\n (  (        )\\ )   ( /(     ( /(             )\\ )  \r\n )\\))(   '  (()/(   )\\())    )\\())    (      (()/(  \r\n((_)()\\ )    /(_)) ((_)\\    ((_)\\     )\\      /(_)) \r\n_(())\\_)()  (_))    _((_)    _((_)   ((_)    (_))   \r\n\\ \\((_)/ /  |_ _|  | \\| |   | \\| |   | __|   | _ \\  \r\n \\ \\/\\/ /    | |   | .` |   | .` |   | _|    |   /  \r\n  \\_/\\_/    |___|  |_|\\_|   |_|\\_|   |___|   |_|_\\  \r\n                                                    "
                 );
+
             int math = 52 / 2 - name.Length/2 - 3;
             Console.SetCursorPosition(math, 10);
             await Console.Out.WriteLineAsync("=== " + $"{name}" + " ===");
+
+            Console.SetCursorPosition(17, 12);
+            await Console.Out.WriteLineAsync($"Press enter to end!");
+            
         }
     }
 }

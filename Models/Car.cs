@@ -35,8 +35,8 @@ namespace Labb2_Threads.Models
             {
                 while (!CarInTrouble && Race.RaceIsRunning)
                 {
-                    await Task.Delay(500);
-                    DistanceTraveled += Speed;
+                    await Task.Delay(50);
+                    DistanceTraveled += Speed / 10;
                     if (DistanceTraveled > 10000 || ct.IsCancellationRequested)
                     {
                         Race.RaceIsRunning = false;
