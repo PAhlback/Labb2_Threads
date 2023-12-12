@@ -11,13 +11,14 @@ namespace Labb2_Threads
 {
     internal class Race
     {
+        public static CancellationTokenSource Cts = new CancellationTokenSource();
         public static ConcurrentDictionary<int, Car> Cars = new ConcurrentDictionary<int, Car>();
         public static double FinishLineDistance { get; set; } = 10000;
         public static bool RaceIsRunning { get; set; } = false;
         public static Car Winner { get; set; }
-        public static CancellationTokenSource Cts = new CancellationTokenSource();
+        
 
-        public Race(int carsInRace = 2)
+        public Race()
         {
             Console.Write($"Name your car: ");
             string carName = Console.ReadLine();

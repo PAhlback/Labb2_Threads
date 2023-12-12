@@ -15,11 +15,11 @@ namespace Labb2_Threads.Models
         public double DistanceTraveled { get; set; }
         public bool CarInTrouble {  get; set; }
 
-        public Car(string name, int speed = 120) 
+        public Car(string name) 
         {
             CarId = CarIdIncrementer;
             Name = name;
-            Speed = speed;
+            Speed = 120;
             CarIdIncrementer++;
         }
 
@@ -32,7 +32,7 @@ namespace Labb2_Threads.Models
                 {
                     await Task.Delay(50);
                     DistanceTraveled += Speed / 10;
-                    if (DistanceTraveled > 10000 || ct.IsCancellationRequested)
+                    if (DistanceTraveled > Race.FinishLineDistance || ct.IsCancellationRequested)
                     {
                         Race.RaceIsRunning = false;
                         Race.Cts.Cancel();

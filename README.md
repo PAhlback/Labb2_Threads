@@ -12,3 +12,8 @@ that handles setup and running of the game.
 
 If one car reaches 10km that car becomes the Winner Car object in the Race properties. The winner is printed to the console.
 If the race is cancelled, a "no winner" message is displayed and the game ends. 
+
+The game is started via the property "RaceIsRunning" in the Race class. This ensures that both cars start at the same time. 
+Most is controlled via that property or via the cancellation token (also a property of Race).
+
+I originally set some properties and methods up for future expansion, but these have since been removed for a cleaner looking code.
