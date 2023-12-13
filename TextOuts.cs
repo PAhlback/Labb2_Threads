@@ -30,7 +30,7 @@ namespace Labb2_Threads
             Console.SetCursorPosition(math, 10);
             await Console.Out.WriteLineAsync("=== " + $"{name}" + " ===");
 
-            Console.SetCursorPosition(17, 12);
+            Console.SetCursorPosition(18, 12);
             await Console.Out.WriteLineAsync($"Press enter to end!");
             
         }
