@@ -16,7 +16,6 @@ namespace Labb2_Threads
         public static double FinishLineDistance { get; set; } = 10000;
         public static bool RaceIsRunning { get; set; } = false;
         public static Car Winner { get; set; }
-        
 
         public Race()
         {
@@ -54,17 +53,16 @@ namespace Labb2_Threads
 
             //Start method waiting for user inputs
             Task status = Task.Run(() => RaceStatus(ct));
-
             Task.WaitAll(car1, car2);
-            
-            Winner = Cars.Values.FirstOrDefault(c => c.DistanceTraveled > 10000);
+
+            Winner = Cars.Values.FirstOrDefault(c => c.DistanceTraveled > FinishLineDistance);
             Console.Clear();
 
             if (Winner != null)
             {
                 await TextOuts.PrintWinnerScreen(Winner.Name.ToString());
                 Task.WaitAny(status);
-            } 
+            }
             else 
             {
                 await Console.Out.WriteLineAsync("Race ended early - no winners here!");
@@ -73,7 +71,7 @@ namespace Labb2_Threads
             }
         }
 
-        static async Task<bool> RaceStatus(CancellationToken ct)
+        static async Task RaceStatus(CancellationToken ct)
         {
             string input = string.Empty;
             while (!ct.IsCancellationRequested)
@@ -93,7 +91,7 @@ namespace Labb2_Threads
                     await Console.Out.WriteLineAsync("Race cancelled. Please wait...");
                 }
             }
-            return true;
+            return;
         }
 
         static async Task Instructions()

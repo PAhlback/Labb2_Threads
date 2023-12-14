@@ -13,7 +13,7 @@ namespace Labb2_Threads.Models
         public string Name { get; set; }
         public int Speed { get; set; }
         public double DistanceTraveled { get; set; }
-        public bool CarInTrouble {  get; set; }
+        public bool CarInTrouble { get; set; }
 
         public Car(string name) 
         {
@@ -94,7 +94,5 @@ namespace Labb2_Threads.Models
             }
             return;
         }
-
-
     }
 }
